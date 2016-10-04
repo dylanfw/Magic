@@ -14,7 +14,9 @@ class Card():
         self.suit = suit
 
     def get_name(self):
-        if self.value == 11:
+        if self.value == 1:
+            return "A"
+        elif self.value == 11:
             return "J"
         elif self.value == 12:
             return "Q"
