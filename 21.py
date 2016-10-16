@@ -31,7 +31,7 @@ class Deck():
     def __init__(self):
         self.cards = []
         for suit in Card.suits:
-            for value in xrange(13):
+            for value in range(13):
                 self.cards.append(Card(value+1, suit))
 
     def shuffle(self):
@@ -41,21 +41,21 @@ deck = Deck()
 deck.shuffle()
 packet = deck.cards[:21]
 
-for _ in xrange(3):
+for _ in range(3):
     first  = []
     second = []
     third  = []
-    for i in xrange(0,21,3):
+    for i in range(0,21,3):
         first.insert(0, packet[i])
         second.insert(0, packet[i+1])
         third.insert(0, packet[i+2])
     packet = []
 
-    print "1: " + " ".join([str(card) for card in first])
-    print "2: " + " ".join([str(card) for card in second])
-    print "3: " + " ".join([str(card) for card in third])
+    print("1: " + " ".join([str(card) for card in first]))
+    print("2: " + " ".join([str(card) for card in second]))
+    print("3: " + " ".join([str(card) for card in third]))
 
-    selection = int(raw_input("> "))
+    selection = int(input("> "))
     if selection == 1:
         packet.extend(second)
         packet.extend(first)
@@ -69,4 +69,4 @@ for _ in xrange(3):
         packet.extend(third)
         packet.extend(second)
 
-print "You're thinking of the %s" % packet[10]
+print("You're thinking of the %s" % packet[10])
