@@ -1,6 +1,4 @@
-"""
-A Python implementation of the "21 Card Trick"
-"""
+""" A Python implementation of the "21 Card Trick" """
 import random
 
 
@@ -8,16 +6,21 @@ class Card:
     suits = ["Clubs", "Hearts", "Spades", "Diamonds"]
 
     def __init__(self, value, suit):
-        self.value = self._get_value(value)
+        if value not in range(1, 14):
+            raise ValueError("Card value must be integer from 1 to 13")
+        if suit not in self.suits:
+            raise ValueError(f"Suit must be one of {self.suits}")
+
+        self.value = value
         self.suit = suit
 
-    @staticmethod
-    def _get_value(value):
+    @property
+    def display_value(self):
         named_values = {1: "Ace", 11: "Jack", 12: "Queen", 13: "King"}
-        return named_values.get(value) or value
+        return named_values.get(self.value, self.value)
 
-    def __str__(self):
-        return f"{self.value} of {self.suit}"
+    def __repr__(self):
+        return f"{self.display_value} of {self.suit}"
 
 
 def perform_trick():
